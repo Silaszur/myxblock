@@ -32,7 +32,7 @@ function MyXBlock(runtime, element) {
       url: "https://catfact.ninja/fact", // External API URL
       success: function (response) {
         // Display the result from the external API (this assumes the response has a `data` field)
-        $(".api-result", element).text("API Result: " + response.fact); // Adjust based on API response
+        $(".api-result", element).text("API Result: " + JSON.stringify(response)); // Adjust based on API response
       },
       error: function () {
         $(".api-result", element).text("Error calling external API.");
