@@ -24,5 +24,21 @@ function MyXBlock(runtime, element) {
       success: updateVotes,
     });
   });
+
+  $(".call-api-button", element).click(function (eventObject) {
+    // Example of calling an external API (you can replace the URL with your actual API endpoint)
+    $.ajax({
+      type: "GET", // Change to POST if the API requires POST requests
+      url: "https://catfact.ninja/fact", // External API URL
+      success: function (response) {
+        // Display the result from the external API (this assumes the response has a `data` field)
+        $(".api-result", element).text("API Result: " + response.fact); // Adjust based on API response
+      },
+      error: function () {
+        $(".api-result", element).text("Error calling external API.");
+      },
+    });
+  });
+
   return {};
 }
